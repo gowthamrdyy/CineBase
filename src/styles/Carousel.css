@@ -1,0 +1,299 @@
+.carousel-wrapper {
+  position: relative;
+  margin-top: 8px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Movie Card */
+.movie-card {
+  flex: 0 0 calc((100% - 80px) / 4);
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s;
+  position: relative;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+}
+
+.movie-card-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--imdb-card);
+  margin-bottom: 12px;
+  border: 1px solid var(--imdb-border);
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.32);
+}
+
+.movie-card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s;
+}
+
+.movie-card:hover .movie-card-poster img {
+  transform: scale(1.05);
+  filter: saturate(1.08);
+}
+
+.movie-card-bookmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.movie-card:hover .movie-card-bookmark {
+  opacity: 1;
+}
+
+.movie-card-bookmark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.movie-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.movie-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.star {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.star svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rate-btn {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.movie-card:hover .rate-btn {
+  opacity: 1;
+}
+
+.movie-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--imdb-text);
+  line-height: 1.4;
+}
+
+.movie-card-trailer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--imdb-blue);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.movie-card:hover .movie-card-trailer {
+  opacity: 1;
+}
+
+.movie-card-trailer svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  z-index: 10;
+  color: var(--imdb-text);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: var(--imdb-border);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.carousel-btn.prev {
+  left: -20px;
+}
+
+.carousel-btn.next {
+  right: -20px;
+}
+
+.carousel-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Top Card (for trending) */
+.top-card {
+  flex: 0 0 calc((100% - 80px) / 4);
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.top-card:hover {
+  transform: translateY(-6px);
+}
+
+.top-card-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.top-card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.top-card:hover .top-card-poster img {
+  transform: scale(1.05);
+}
+
+.top-card-rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--imdb-yellow);
+  color: #000;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.top-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.top-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--imdb-text);
+}
+
+@media (max-width: 1024px) {
+  .movie-card, .top-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    margin-top: 10px;
+  }
+
+  .movie-card, .top-card {
+    flex: 0 0 calc((100% - 16px) / 2);
+    min-width: 0;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .carousel-track {
+    gap: 12px;
+    padding: 4px 0 16px;
+  }
+
+  .movie-card, .top-card {
+    flex: 0 0 calc(42% - 8px);
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+}

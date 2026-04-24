@@ -1,0 +1,216 @@
+/* App Container */
+.App {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 18px 56px;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.home-intro {
+  padding: 26px;
+  border-radius: 8px;
+  border: 1px solid var(--imdb-border);
+  background: rgba(12, 15, 20, 0.82);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.26);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--premium-line);
+}
+
+.home-intro h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  max-width: 820px;
+}
+
+.home-intro p {
+  color: var(--imdb-text-muted);
+  max-width: 760px;
+}
+
+.home-status {
+  margin-top: -32px;
+  margin-bottom: -20px;
+  color: #9ed0ff;
+  font-size: 14px;
+}
+
+.home-status.warning {
+  color: #ffd88a;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--imdb-text);
+}
+
+.section-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--imdb-blue);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.section-link:hover {
+  color: #7ab5ff;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--imdb-text-muted);
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.what-to-watch {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--imdb-border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--imdb-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: var(--imdb-yellow);
+  border-bottom-color: var(--imdb-yellow);
+}
+
+.tab-btn:hover {
+  color: var(--imdb-text);
+}
+
+.watchlist-banner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: linear-gradient(135deg, rgba(87, 153, 239, 0.1) 0%, rgba(245, 197, 24, 0.05) 100%);
+  border: 1px solid var(--imdb-border);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: var(--shadow);
+}
+
+.watchlist-banner-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.watchlist-banner h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.watchlist-banner p {
+  font-size: 14px;
+  color: var(--imdb-text-muted);
+}
+
+.watchlist-banner-btn {
+  flex-shrink: 0;
+  background: var(--imdb-yellow);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.watchlist-banner-btn:hover {
+  background: #ffd600;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 12px 12px 32px;
+  }
+
+  .content-area {
+    gap: 20px;
+  }
+
+  .home-intro {
+    padding: 20px;
+  }
+
+  .home-intro h1 {
+    font-size: 28px;
+  }
+
+  .section-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .watchlist-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .watchlist-banner-btn {
+    width: 100%;
+  }
+}

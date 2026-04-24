@@ -1,0 +1,82 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.sidebar-box {
+  background: var(--imdb-card);
+  border: 1px solid var(--imdb-border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.sidebar-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--imdb-text);
+}
+
+.sidebar-list-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--imdb-border);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sidebar-list-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar-list-item:hover {
+  opacity: 0.8;
+}
+
+.sidebar-list-item img {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.sidebar-list-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--imdb-text);
+  line-height: 1.3;
+}
+
+.sidebar-list-meta {
+  font-size: 11px;
+  color: var(--imdb-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sidebar-list-meta svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: static;
+    top: auto;
+  }
+}

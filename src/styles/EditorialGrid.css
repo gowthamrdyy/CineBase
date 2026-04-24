@@ -1,0 +1,88 @@
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.editorial-card {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.editorial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.editorial-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.editorial-card:hover img {
+  transform: scale(1.08);
+}
+
+.editorial-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  color: var(--imdb-text);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.editorial-card:hover .editorial-card-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.editorial-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.editorial-card-desc {
+  font-size: 13px;
+  color: var(--imdb-text-muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .editorial-card-title {
+    font-size: 14px;
+  }
+
+  .editorial-card-desc {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editorial-grid {
+    grid-template-columns: 1fr;
+  }
+}

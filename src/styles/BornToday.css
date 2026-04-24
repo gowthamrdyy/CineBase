@@ -1,0 +1,87 @@
+.born-today-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 0;
+}
+
+.born-today-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.born-today-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.born-today-track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.born-card {
+  flex: 0 0 calc((100% - 80px) / 5);
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.born-card:hover {
+  transform: translateY(-4px);
+}
+
+.born-card-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--imdb-card);
+  border: 2px solid var(--imdb-border);
+  transition: border-color 0.2s;
+}
+
+.born-card:hover .born-card-avatar {
+  border-color: var(--imdb-yellow);
+}
+
+.born-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.born-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--imdb-text);
+  line-height: 1.3;
+}
+
+.born-card-age {
+  font-size: 12px;
+  color: var(--imdb-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .born-card {
+    flex: 0 0 calc((100% - 64px) / 4);
+  }
+}
+
+@media (max-width: 768px) {
+  .born-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+  }
+}
+
+@media (max-width: 480px) {
+  .born-card {
+    flex: 0 0 calc((100% - 32px) / 2);
+  }
+}

@@ -1,0 +1,269 @@
+.movie-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.movie-detail-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.movie-detail-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  background: var(--imdb-dark);
+  border: 1px solid var(--imdb-border);
+  border-radius: var(--radius);
+  z-index: 2001;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-detail-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.movie-detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-detail-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.movie-detail-close svg {
+  width: 24px;
+  height: 24px;
+  color: var(--imdb-text);
+}
+
+.movie-detail-backdrop {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.movie-detail-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-detail-backdrop-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, var(--imdb-dark));
+}
+
+.movie-detail-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+  margin-top: -60px;
+}
+
+.movie-detail-poster {
+  width: 160px;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.movie-detail-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.movie-detail-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--imdb-text);
+}
+
+.movie-detail-meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--imdb-text-muted);
+}
+
+.movie-detail-year {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+.movie-detail-genre {
+  background: rgba(87, 153, 239, 0.2);
+  padding: 4px 12px;
+  border-radius: 4px;
+  color: var(--imdb-blue);
+}
+
+.movie-detail-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.movie-detail-star {
+  display: flex;
+  width: 20px;
+  height: 20px;
+}
+
+.movie-detail-score {
+  color: var(--imdb-yellow);
+}
+
+.movie-detail-max {
+  color: var(--imdb-text-muted);
+  font-weight: 400;
+}
+
+.movie-detail-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--imdb-text-muted);
+  max-width: 600px;
+}
+
+.movie-detail-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.movie-detail-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.movie-detail-btn.primary {
+  background: var(--imdb-yellow);
+  color: #000;
+}
+
+.movie-detail-btn.primary:hover {
+  background: #ffd600;
+  transform: translateY(-2px);
+}
+
+.movie-detail-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--imdb-text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.movie-detail-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.movie-detail-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .movie-detail-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .movie-detail-content {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    margin-top: -40px;
+  }
+
+  .movie-detail-poster {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .movie-detail-info {
+    padding-top: 16px;
+  }
+
+  .movie-detail-title {
+    font-size: 24px;
+  }
+
+  .movie-detail-actions {
+    flex-direction: column;
+  }
+
+  .movie-detail-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .movie-detail-backdrop {
+    height: 200px;
+  }
+}

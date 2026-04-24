@@ -1,0 +1,170 @@
+.signin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.signin-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.signin-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 420px;
+  background: linear-gradient(145deg, rgba(20, 24, 31, 0.98), rgba(7, 9, 12, 0.98));
+  border: 1px solid var(--imdb-border);
+  border-radius: 8px;
+  padding: 40px;
+  z-index: 3001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.signin-modal::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--premium-line);
+}
+
+.signin-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.signin-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.signin-modal-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.signin-modal-close svg {
+  width: 24px;
+  height: 24px;
+  color: var(--imdb-text);
+}
+
+.signin-modal-logo {
+  background: linear-gradient(135deg, #f5c518, #ffe27a);
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 24px;
+  letter-spacing: 0;
+}
+
+.signin-modal h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--imdb-text);
+}
+
+.signin-modal-desc {
+  font-size: 14px;
+  color: var(--imdb-text-muted);
+  margin-bottom: 28px;
+}
+
+.signin-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signin-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--imdb-border);
+  background: transparent;
+  border-radius: 8px;
+  color: var(--imdb-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.signin-option-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.admin-dev-btn {
+  border-color: rgba(245, 197, 24, 0.38);
+  background: rgba(245, 197, 24, 0.08);
+  color: #ffe27a;
+}
+
+.signin-option-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.signin-option-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.signin-status {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--imdb-text-muted);
+}
+
+@media (max-width: 480px) {
+  .signin-modal {
+    width: 95%;
+    padding: 24px;
+  }
+
+  .signin-modal h2 {
+    font-size: 20px;
+  }
+
+  .signin-option-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
