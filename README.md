@@ -1,7 +1,5 @@
 # CineBase
 
-![CineBase Hero](public/IMDBB/1.jpeg)
-
 CineBase is a premium, high-performance React application inspired by the leading movie databases and streaming platforms. It features a fully responsive, visually stunning UI tailored specifically for showcasing movies, tracking box office hits, and curating an immersive browsing experience across all devices.
 
 ## Features
