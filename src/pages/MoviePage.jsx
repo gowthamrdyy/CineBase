@@ -49,12 +49,12 @@ function MoviePage() {
   const { user, isAdmin } = useAuthUser();
   const config = useImageConfig();
 
-  const allEntries = [
+  const allEntries = useMemo(() => [
     ...(config.hero || []),
     ...(config.fanFavorites || []),
     ...(config.topPicks || []),
     ...(config.trending || []),
-  ];
+  ], [config]);
   
   const movie = useMemo(() => {
     const found = allEntries.find(e => {
@@ -62,9 +62,9 @@ function MoviePage() {
       return id === movieId;
     });
     return toMovieShape(found);
-  }, [config, movieId]);
+  }, [allEntries, movieId]);
 
-  const allMovies = useMemo(() => allEntries.map(toMovieShape), [config]);
+  const allMovies = useMemo(() => allEntries.map(toMovieShape), [allEntries]);
 
   const [ratingData, setRatingData] = useState({ average: movie?.rating || 0, votes: 0, configured: firebaseReady });
   const [selectedRating, setSelectedRating] = useState(0);
