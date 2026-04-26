@@ -10,6 +10,7 @@ import { submitMovieReview, subscribeMovieReviews } from '../services/reviews';
 import { fetchMovieRating, submitMovieRating } from '../services/ratings';
 import { firebaseReady } from '../services/firebase';
 import { signOutUser } from '../services/auth';
+import { getMovieEnrichment } from '../data/movieDatabase';
 import '../styles/MoviePage.css';
 import '../styles/Global.css';
 
@@ -63,6 +64,8 @@ function MoviePage() {
     });
     return toMovieShape(found);
   }, [allEntries, movieId]);
+
+  const enrichment = useMemo(() => movieId ? getMovieEnrichment(movieId) : null, [movieId]);
 
   const allMovies = useMemo(() => allEntries.map(toMovieShape), [allEntries]);
 
@@ -244,8 +247,15 @@ function MoviePage() {
               <div className="movie-main-info">
                 <h1>{movie.title}</h1>
                 <p className="movie-meta">
-                  {movie.year} • {movie.runtime} • {movie.language} • {movie.genre}
+                  {movie.year} • {enrichment?.runtime || movie.runtime} • {enrichment?.language || movie.language} • {movie.genre}
                 </p>
+                {enrichment && enrichment.genres.length > 0 && (
+                  <div className="movie-genre-tags">
+                    {enrichment.genres.map((g) => (
+                      <span key={g} className="genre-tag">{g}</span>
+                    ))}
+                  </div>
+                )}
                 <div className="movie-rating-cards">
                   <div className="rating-card">
                     <span className="rating-label">CineBase score</span>
@@ -281,18 +291,49 @@ function MoviePage() {
                 </div>
                 <div>
                   <span>Genre</span>
-                  <strong>{movie.genre}</strong>
+                  <strong>{enrichment ? enrichment.genres.join(', ') : movie.genre}</strong>
                 </div>
                 <div>
                   <span>Language</span>
-                  <strong>{movie.language}</strong>
+                  <strong>{enrichment?.language || movie.language}</strong>
                 </div>
                 <div>
                   <span>Runtime</span>
-                  <strong>{movie.runtime}</strong>
+                  <strong>{enrichment?.runtime || movie.runtime}</strong>
                 </div>
+                {enrichment?.director && (
+                  <div>
+                    <span>Director</span>
+                    <strong>{enrichment.director.name}</strong>
+                  </div>
+                )}
+                {enrichment?.cast?.length > 0 && (
+                  <div>
+                    <span>Lead Cast</span>
+                    <strong>{enrichment.cast.map(c => c.name).join(', ')}</strong>
+                  </div>
+                )}
               </div>
             </article>
+
+            {enrichment?.cast?.length > 0 && (
+              <article className="movie-panel">
+                <h2>Cast</h2>
+                <div className="movie-cast-grid">
+                  {enrichment.cast.map((member) => (
+                    <div key={member.id} className="cast-card">
+                      <div className="cast-avatar">
+                        {member.name.charAt(0)}
+                      </div>
+                      <div className="cast-info">
+                        <strong>{member.name}</strong>
+                        <span>as {member.role}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            )}
 
             <article className="movie-panel">
               <div className="movie-panel-heading">

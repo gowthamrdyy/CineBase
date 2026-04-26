@@ -409,3 +409,92 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+/* ── Genre Tags ────────────────────────────────────────────────────────── */
+.movie-genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.genre-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: rgba(245, 197, 24, 0.12);
+  color: var(--imdb-yellow);
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.genre-tag:hover {
+  background: rgba(245, 197, 24, 0.22);
+  border-color: rgba(245, 197, 24, 0.45);
+}
+
+/* ── Cast Grid ─────────────────────────────────────────────────────────── */
+.movie-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.cast-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--imdb-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.22s, border-color 0.22s, transform 0.22s;
+}
+
+.cast-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(245, 197, 24, 0.25);
+  transform: translateY(-2px);
+}
+
+.cast-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--imdb-yellow), #e6a817);
+  color: #000;
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cast-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cast-info strong {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cast-info span {
+  font-size: 13px;
+  color: var(--imdb-text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 560px) {
+  .movie-cast-grid {
+    grid-template-columns: 1fr;
+  }
+}
